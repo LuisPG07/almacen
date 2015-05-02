@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArticuloCreateDlg" widgetVar="ArticuloCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateArticuloTitle}">
+            <h:form id="ArticuloCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{articuloController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateArticuloLabel_idArt}" for="idArt" />
+                        <p:inputText id="idArt" value="#{articuloController.selected.idArt}" title="#{bundle.CreateArticuloTitle_idArt}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_idArt}"/>
+                        <p:outputLabel value="#{bundle.CreateArticuloLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{articuloController.selected.tipo}" title="#{bundle.CreateArticuloTitle_tipo}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_tipo}"/>
+                        <p:outputLabel value="#{bundle.CreateArticuloLabel_precio}" for="precio" />
+                        <p:inputText id="precio" value="#{articuloController.selected.precio}" title="#{bundle.CreateArticuloTitle_precio}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_precio}"/>
+                        <p:outputLabel value="#{bundle.CreateArticuloLabel_talla}" for="talla" />
+                        <p:inputText id="talla" value="#{articuloController.selected.talla}" title="#{bundle.CreateArticuloTitle_talla}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_talla}"/>
+                        <p:outputLabel value="#{bundle.CreateArticuloLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{articuloController.selected.color}" title="#{bundle.CreateArticuloTitle_color}" />
+                        <p:outputLabel value="#{bundle.CreateArticuloLabel_marca}" for="marca" />
+                        <p:inputText id="marca" value="#{articuloController.selected.marca}" title="#{bundle.CreateArticuloTitle_marca}" />
+                        <p:outputLabel value="#{bundle.CreateArticuloLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{articuloController.selected.cantidad}" title="#{bundle.CreateArticuloTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_cantidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{articuloController.create}" value="#{bundle.Save}" update="display,:ArticuloListForm:datalist,:growl" oncomplete="handleSubmit(args,'ArticuloCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ArticuloCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

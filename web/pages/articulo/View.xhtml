@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArticuloViewDlg" widgetVar="ArticuloViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewArticuloTitle}">
+            <h:form id="ArticuloViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{articuloController.selected != null}">
+                        <h:outputText value="#{bundle.ViewArticuloLabel_idArt}"/>
+                        <h:outputText value="#{articuloController.selected.idArt}" title="#{bundle.ViewArticuloTitle_idArt}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_tipo}"/>
+                        <h:outputText value="#{articuloController.selected.tipo}" title="#{bundle.ViewArticuloTitle_tipo}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_precio}"/>
+                        <h:outputText value="#{articuloController.selected.precio}" title="#{bundle.ViewArticuloTitle_precio}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_talla}"/>
+                        <h:outputText value="#{articuloController.selected.talla}" title="#{bundle.ViewArticuloTitle_talla}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_color}"/>
+                        <h:outputText value="#{articuloController.selected.color}" title="#{bundle.ViewArticuloTitle_color}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_marca}"/>
+                        <h:outputText value="#{articuloController.selected.marca}" title="#{bundle.ViewArticuloTitle_marca}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_cantidad}"/>
+                        <h:outputText value="#{articuloController.selected.cantidad}" title="#{bundle.ViewArticuloTitle_cantidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ArticuloViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
